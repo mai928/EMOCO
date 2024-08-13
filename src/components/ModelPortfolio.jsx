@@ -21,15 +21,22 @@ const ModelPortfolio = ({ Modelsdata }) => {
     useEffect(() => {
         const fetchDataFromAPI = async () => {
             try {
-                const result = await fetchData(`api/models/${activeIndex}`, i18n.language);
-                setModelById(result?.data);
+                const response = await fetch(`http://admin.emocoegypt.com/admin/public/api/models/${activeIndex}`, {
+                    headers: { 'Accept-Language': i18n.language ,
+                        "Cookie": "laravel_session=PGsgd3jR1M5Ss3kBJytnvHXHHLT3Xvk6bKKiazlD"
+                    }
+                });
+                const models = await response.json();  // Await the JSON parsing
+                setModelById(models?.data);
+                console.log(models);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-
+    
         fetchDataFromAPI();
-    }, [activeIndex])
+    }, [activeIndex, i18n.language]);
+    
 
 
     return (
