@@ -26,7 +26,7 @@ const ModelPortfolio = ({ Modelsdata }) => {
                         "Cookie": "laravel_session=PGsgd3jR1M5Ss3kBJytnvHXHHLT3Xvk6bKKiazlD"
                     }
                 });
-                const models = await response.json();  // Await the JSON parsing
+                const models = await response.json();  
                 setModelById(models?.data);
                 console.log(models);
             } catch (error) {
