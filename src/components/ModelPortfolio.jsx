@@ -37,17 +37,17 @@ const ModelPortfolio = ({ Modelsdata }) => {
             <p className='text-4xl font-bold pt-5 pb-10'>{t("Pool Models")}</p>
 
 
+            <div className=''>
+                <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4 items-center px-4 sm:px-8 md:px-16'>
+                    {Modelsdata?.map((item, index) => (
+                        <div key={index} className='flex flex-col lg:flex-row items-center'
+                        >
+                            <div onClick={() => handleCatagory(item.id)} className={`m-auto  cursor-pointer ${activeIndex === item.id ? 'fill-black' : 'fill-slate-500'}`}>
+                                <div className={`${activeIndex === item.id ? 'fill-black' : 'fill-slate-500'}`}>{icons[index].icon && icons[index].icon}</div>
+                                <p className={`${activeIndex === item.id ? 'text-black font-bold text-[15px]' : 'text-slate-500 text-sm font-semibold'}`}>{t(item.title)}</p>
+                            </div>
 
-            <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-7 gap-4 items-center px-4 sm:px-8 md:px-16'>
-                {Modelsdata?.map((item, index) => (
-                    <div key={index} className='flex flex-col lg:flex-row items-center'
-                    >
-                        <div onClick={() => handleCatagory(item.id)}  className={`m-auto  cursor-pointer ${activeIndex === item.id ? 'fill-black' : 'fill-slate-500'}`}>
-                            <div className={`${activeIndex === item.id ? 'fill-black' : 'fill-slate-500'}`}>{icons[index].icon && icons[index].icon}</div>
-                            <p className={`${activeIndex === item.id ? 'text-black font-bold text-[15px]' : 'text-slate-500 text-sm font-semibold'}`}>{t(item.title)}</p>
-                        </div>
-
-                        {/* {
+                            {/* {
                             activeIndex === item.id && <div className='py-5  block lg:hidden'>
                                 {
                                     ModelById?.map((item ,index) => (
@@ -61,17 +61,17 @@ const ModelPortfolio = ({ Modelsdata }) => {
                             </div>
                         } */}
 
-                    </div>
-                ))}
+                        </div>
+                    ))}
 
 
 
-            </div>
+                </div>
 
-            <div className=''>
+
                 <div className='flex gap-10 py-16 ' >
                     {
-                        ModelById?.map((item ,index) => (
+                        ModelById?.map((item, index) => (
                             <div key={index} className='text-center  m-auto'>
                                 <img className='w-[300px] lg:w-[400px] m-auto rounded-lg' alt='img' src={`${item.photo}`} />
                                 <h3 className='text-xl  font-bold  py-5'>{t(item.title)}</h3>
