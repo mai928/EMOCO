@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+BE+VLG:wght@100..400&display=swap');
+@import '../styles/fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+body {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+
+.swiper-slide-custom {
+  position: relative;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  width: 300px;  
+  height: 200px; 
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* .image-container img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+} */
+
+.custom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+/* .swiper-slide-active {
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.8);
+  z-index: 1;
+}
+
+.swiper-slide {
+  margin-left: -150px; 
+} */
+
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: black;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+  transform: translateX(300px);
+  z-index: 9999;
+}
+
+.text-auto-complete {
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 4px solid #0e9ace; /* Cursor effect */
+  width: 0;
+  animation: typing 5s  steps(24, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 55%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  20% { border-color: #0e9ace; }
+}
+
+
+.bg-img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+.black-filter {
+  filter: invert(0%) brightness(0%);
+}
+
+.gray-filter {
+  filter: grayscale(100%);
+}
