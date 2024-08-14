@@ -22,21 +22,22 @@ const ModelPortfolio = ({ Modelsdata }) => {
         const fetchDataFromAPI = async () => {
             try {
                 const response = await fetch(`http://admin.emocoegypt.com/admin/public/api/models/${activeIndex}`, {
-                    headers: { 'Accept-Language': i18n.language ,
+                    headers: {
+                        'Accept-Language': i18n.language,
                         "Cookie": "laravel_session=PGsgd3jR1M5Ss3kBJytnvHXHHLT3Xvk6bKKiazlD"
                     }
                 });
-                const models = await response.json();  
+                const models = await response.json();
                 setModelById(models?.data);
                 console.log(models);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
-    
+
         fetchDataFromAPI();
     }, [activeIndex, i18n.language]);
-    
+
 
 
     return (
@@ -54,19 +55,21 @@ const ModelPortfolio = ({ Modelsdata }) => {
                                 <p className={`${activeIndex === item.id ? 'text-black font-bold text-[15px]' : 'text-slate-500 text-sm font-semibold'}`}>{t(item.title)}</p>
                             </div>
 
-                            {/* {
-                            activeIndex === item.id && <div className='py-5  block lg:hidden'>
-                                {
-                                    ModelById?.map((item ,index) => (
-                                        <div key={index} className='text-center  m-auto'>
-                                            <img className='w-[300px] lg:w-[400px] m-auto rounded-lg' alt='img' src={`${item.photo}`} />
-                                            <h3 className='text-xl  font-bold  py-5'>{t(item.title)}</h3>
-                                            <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(item.details)}</p>
-                                        </div>
-                                    ))
-                                }
-                            </div>
-                        } */}
+                            {
+                                activeIndex === item.id && <div className='py-5  block lg:hidden'>
+                                    {
+                                        ModelById?.map((item, index) => (
+                                            <div key={index} className='text-center  m-auto'>
+                                                <img className='w-[300px] lg:w-[400px] m-auto rounded-lg' alt='img' src={`${item.photo}`} />
+                                                <h3 className='text-xl  font-bold  py-5'>{t(item.title)}</h3>
+                                                <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(item.details)}</p>
+                                                <Link href={'/'} className='text-white bg-secondary_color'>MORE Info</Link>
+
+                                            </div>
+                                        ))
+                                    }
+                                </div>
+                            }
 
                         </div>
                     ))}
@@ -76,7 +79,7 @@ const ModelPortfolio = ({ Modelsdata }) => {
                 </div>
 
 
-                <div className='flex gap-10 py-16 ' >
+                {/* <div className='flex gap-10 py-16 ' >
                     {
                         ModelById?.map((item, index) => (
                             <div key={index} className='text-center  m-auto'>
@@ -86,7 +89,38 @@ const ModelPortfolio = ({ Modelsdata }) => {
                             </div>
                         ))
                     }
+                </div> */}
+            </div>
+
+
+            <div className='hidden lg:block'>
+                <div className='flex gap-10 py-16'>
+                    {ModelById && ModelById.length > 0 ? (
+                        ModelById.map((item, index) => (
+                            <div key={index} className='text-center m-auto'>
+                                <img
+                                    className='w-[300px] lg:w-[400px] m-auto rounded-lg'
+                                    alt='img'
+                                    src={item.photo}
+                                />
+                                <h3 className='text-xl font-bold py-5'>{t(item.title)}</h3>
+                                <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>
+                                    {t(item.details)}
+                                </p>
+                                <div className='my-5'>
+                                    <Link href={`/modelDetails/${item.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>MORE Info</Link>
+
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className='text-center m-auto'>
+                            <p className='font-semibold'>No models available</p>
+
+                        </div>
+                    )}
                 </div>
+
             </div>
 
 
