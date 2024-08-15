@@ -28,7 +28,7 @@ const ServiceDetails = async ({ params }) => {
   const { t } = await initTranslations(locale, i18nNamespaces)
 
   const slug = params?.slug
-  console.log(slug)
+  // console.log(slug)
 
   const res = await fetchData(`api/single-service/${slug}`,locale)
   const ServiceDetails = res?.data
@@ -69,11 +69,3 @@ const ServiceDetails = async ({ params }) => {
 }
 
 export default ServiceDetails
-
-
-// Maintenance-&-Operation
-// Fire-Fighting-Systems
-// Plumbing-Stations
-// Health-Clubs-Equipment
-// Procurement-&-Supply
-// Swimming-pools

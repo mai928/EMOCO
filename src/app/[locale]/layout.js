@@ -1,6 +1,4 @@
-import { Inter } from "next/font/google";
-import logo from '../../app/logo.ico'
-// import Navbar from "@/components/Menu/Navbar";
+import { Inter } from "next/font/google";// import Navbar from "@/components/Menu/Navbar";
 import Footer from "@/components/Footer";
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider/TranslationsProvider";

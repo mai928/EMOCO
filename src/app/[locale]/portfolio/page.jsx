@@ -6,19 +6,18 @@ import { fetchData } from '../../../../utils/api'
 
 
 
+export async function generateMetadata({ params }) {
+    const { locale } = params
 
-// export async function generateMetadata({ params }) {
-//     const { locale } = params
+    return {
+        title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+        description:  locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+        other: {
+            title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+        }
 
-//     return {
-//         title: locale === 'ar' ? 'المقالات | دكتور خالد النمرسي' : locale === 'en' ? "Blogs | Dr Khaled Elnomrosy" : locale === 'fr' ? 'french' : 'language',
-//         description: locale === 'ar' ? 'المقالات | دكتور خالد النمرسي' : locale === 'en' ? "Blogs | Dr Khaled Elnomrosy" : locale === 'fr' ? 'french' : 'language',
-//         other: {
-//             title: locale === 'ar' ? 'المقالات | دكتور خالد النمرسي' : locale === 'en' ? "Blogs | Dr Khaled Elnomrosy" : locale === 'fr' ? 'french' : 'language',
-//         }
-
-//     }
-// }
+    }
+}
 
 const OurPortfolio = async ({ params }) => {
     const i18nNamespaces = ["home"];

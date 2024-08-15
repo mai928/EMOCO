@@ -58,12 +58,12 @@ const ModelPortfolio = ({ Modelsdata }) => {
                             {
                                 activeIndex === item.id && <div className='py-5  block lg:hidden'>
                                     {
-                                        ModelById?.map((item, index) => (
+                                        ModelById?.map((model, index) => (
                                             <div key={index} className='text-center  m-auto'>
-                                                <img className='w-[300px] lg:w-[400px] m-auto rounded-lg' alt='img' src={`${item.photo}`} />
-                                                <h3 className='text-xl  font-bold  py-5'>{t(item.title)}</h3>
-                                                <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(item.details)}</p>
-                                                <Link href={'/'} className='text-white bg-secondary_color'>MORE Info</Link>
+                                                <img className='w-[300px] lg:w-[400px] m-auto rounded-lg' alt='img' src={`${model.photo}`} />
+                                                <h3 className='text-xl  font-bold  py-5'>{t(model.title)}</h3>
+                                                <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(model.details)}</p>
+                                                <Link href={`/portfolio/${model.id}`} className='text-white bg-secondary_color'>MORE Info</Link>
 
                                             </div>
                                         ))
@@ -108,7 +108,7 @@ const ModelPortfolio = ({ Modelsdata }) => {
                                     {t(item.details)}
                                 </p>
                                 <div className='my-5'>
-                                    <Link href={`/modelDetails/${item.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>MORE Info</Link>
+                                    <Link href={`/portfolio/${item.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>MORE Info</Link>
 
                                 </div>
                             </div>

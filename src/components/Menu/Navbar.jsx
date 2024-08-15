@@ -16,6 +16,12 @@ const Navbar = () => {
   // console.log(newpath)
   const { t, i18n } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(null);
+   
+  const  [activeLink ,setActiveLink]=useState(1)
+
+  const handleLink =(id)=>{
+     setActiveLink(id)
+  }
 
   const handleMouseEnter = (id) => {
     setActiveIndex(id);
@@ -99,10 +105,6 @@ const Navbar = () => {
   }, [])
 
 
-  // const LOGO =`${data?.logo}`
-
-
-
   useEffect(() => {
     const fetchDataService = async () => {
       try {
@@ -129,7 +131,7 @@ const Navbar = () => {
             (
               <div className='flex  justify-between items-center '>
                 <Link href={'/'}>
-                  <Image width={90}  src={logo} alt='Logo' />
+                  <img width={90}  src={`${data?.logo}`} alt='Logo' />
                 </Link>
 
                 <div>
@@ -141,7 +143,7 @@ const Navbar = () => {
             ) : (
               <div className={`flex justify-between ${showmenuIcon === true ? 'gap-20' : 'gap-0'}`}>
                 <Link href={'/'}>
-                  <Image    width={140} className={`${isFixed && 'w-28'}`} src={logo} alt='Logo' />
+                  <img    width={140} className={`${isFixed && 'w-28'}`} src={`${data?.logo}`} alt='Logo' />
                 </Link>
 
                
@@ -149,13 +151,13 @@ const Navbar = () => {
                 <div>
                   <div className='flex   gap-6 pt-6 relative'>
                     {navbar.map((nav, index) => (
-                      <div key={nav.id} className='' onMouseEnter={() => handleMouseEnter(nav.id)} >
+                      <div key={nav.id} className='' onMouseEnter={() => handleMouseEnter(nav.id)} onClick={()=>handleLink(nav.id)} >
                         <ul key={index} className='py-2 flex items-center  '>
                           <li className='text-wave_gray font-semibold  relative '>
                             <Link href={nav.path}>{t(nav.name)}</Link>
                             <div>
                               {
-                                activeIndex === nav.id && (<div className='border-b-[3px] rounded-lg border-solid border-secondary_color m-auto w-[85%] mt-1 ' />)
+                                activeLink === nav.id && (<div className='border-b-[3px] rounded-lg border-solid border-secondary_color m-auto w-[85%] mt-1 ' />)
                               }
                             </div>
                           </li>
@@ -216,7 +218,7 @@ const Navbar = () => {
           <div className={`sidebar ${toggle ? "open" : ""} `}>
             <div className="p-10">
               <div className="flex justify-between items-center mb-10">
-                <Link href={'/'}><Image alt="logo" width={100} height={'auto'} src={logo} /></Link>
+                <Link href={'/'}><img alt="logo" width={100} height={'auto'} src={`${data?.logo}`} /></Link>
                 <h1
                   className="cursor-pointer p-1 px-3 rounded-full text-white  bg-secondary_color font-semibold text-white-300"
                   onClick={() => setToggle(false)}
