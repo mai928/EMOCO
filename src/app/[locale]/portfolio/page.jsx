@@ -1,54 +1,53 @@
+'use client'
 import initTranslations from '@/app/i18n'
 import ModelPortfolio from '@/components/ModelPortfolio'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { fetchData } from '../../../../utils/api'
+import { useTranslation } from 'react-i18next'
 
 
 
-export async function generateMetadata({ params }) {
-    const { locale } = params
+// export async function generateMetadata({ params }) {
+//     const { locale } = params
 
-    return {
-        title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
-        description:  locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
-        other: {
-            title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+//     return {
+//         title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+//         description:  locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+//         other: {
+//             title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+//         }
+
+//     }
+// }
+
+const OurPortfolio = () => {
+    const { t, i18n } = useTranslation()
+    const [data, setData] = useState([])
+
+
+    useEffect(() => {
+
+        const fetchDataFromAPI = async () => {
+            try {
+
+
+                const portfolioResponse = await fetchData(`api/portfolio`, i18n.language);
+                setData(portfolioResponse?.data)
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+
+
         }
 
-    }
-}
-
-const OurPortfolio = async ({ params }) => {
-    const i18nNamespaces = ["home"];
-    const { locale } = params
-    const { t } = await initTranslations(locale, i18nNamespaces)
-
-
-    let data=[]
-    let Modelsdata=null
-    // let ModelById=null
-    // let index =1
-    try {
-        const portfolioResponse = await fetchData(`api/portfolio`, locale);
-         data = portfolioResponse?.data;
-
-        // console.log(data)
-
-        // const modelsResponse = await fetchData(`api/models-category`, locale);
-        //   Modelsdata = modelsResponse?.data;
-        // console.log('Modelsdata::',Modelsdata)
+        fetchDataFromAPI()
+    }, [])
 
 
 
-       
-        
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
 
-
-   
 
 
     return (
@@ -80,7 +79,7 @@ const OurPortfolio = async ({ params }) => {
                     <p className='text-gray-600 py-10'>{t(data.details)}</p>
                 </div>
             </div>
-            <ModelPortfolio  />
+            <ModelPortfolio />
 
         </section>
     )
