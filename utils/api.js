@@ -18,7 +18,7 @@ export const fetchData = async (variable, lang) => {
 		};
 
 		const response = await fetch(
-			`http://api.emocoegypt.com/${variable}`,
+			`https://api.emocoegypt.com/${variable}`,
 			requestOptions
 		);
 
