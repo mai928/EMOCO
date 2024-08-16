@@ -27,17 +27,19 @@ const OurPortfolio = async ({ params }) => {
 
     let data=[]
     let Modelsdata=null
-    let ModelById=null
-    let index =1
+    // let ModelById=null
+    // let index =1
     try {
         const portfolioResponse = await fetchData(`api/portfolio`, locale);
          data = portfolioResponse?.data;
 
         // console.log(data)
 
-        const modelsResponse = await fetchData(`api/models-category`, locale);
-          Modelsdata = modelsResponse?.data;
+        // const modelsResponse = await fetchData(`api/models-category`, locale);
+        //   Modelsdata = modelsResponse?.data;
         // console.log('Modelsdata::',Modelsdata)
+
+
 
        
         
@@ -78,7 +80,7 @@ const OurPortfolio = async ({ params }) => {
                     <p className='text-gray-600 py-10'>{t(data.details)}</p>
                 </div>
             </div>
-            <ModelPortfolio Modelsdata={Modelsdata} />
+            <ModelPortfolio  />
 
         </section>
     )

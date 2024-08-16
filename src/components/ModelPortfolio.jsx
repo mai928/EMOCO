@@ -6,11 +6,12 @@ import { fetchData } from '../../utils/api';
 import { useTranslation } from 'react-i18next';
 import { icons } from '@/data/data';
 
-const ModelPortfolio = ({ Modelsdata }) => {
+const ModelPortfolio = () => {
 
     const { t, i18n } = useTranslation()
     const [ModelById, setModelById] = useState([])
-    // console.log('Modelsdata::', Modelsdata)
+    const [Modelsdata, setModelsdata] = useState([])
+
 
     const [activeIndex, setActiveIndex] = useState(2);
 
@@ -21,14 +22,8 @@ const ModelPortfolio = ({ Modelsdata }) => {
     useEffect(() => {
         const fetchDataFromAPI = async () => {
             try {
-                const response = await fetch(`http://admin.emocoegypt.com/admin/public/api/models/${activeIndex}`, {
-                    headers: {
-                        'Accept-Language': i18n.language,
-                        "Cookie": "laravel_session=PGsgd3jR1M5Ss3kBJytnvHXHHLT3Xvk6bKKiazlD"
-                    }
-                });
-                const models = await response.json();
-                setModelById(models?.data);
+                const models = await fetchData(`api/models-category`,i18n.language)
+                setModelsdata(models?.data);
                 console.log(models);
             } catch (error) {
                 console.error("Error fetching data:", error);
@@ -36,20 +31,28 @@ const ModelPortfolio = ({ Modelsdata }) => {
         };
 
         fetchDataFromAPI();
-    }, []);
+    },[]);
+
+    // useEffect(() => {
+    //     const fetchDataFromAPI = async () => {
+    //         try {
+    //             const models = await fetchData(`api/models/${activeIndex}`)
+    //             setModelById(models?.data);
+    //             console.log(models);
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error);
+    //         }
+    //     };
+
+    //     fetchDataFromAPI();
+    // },[]);
 
 
     useEffect(() => {
         const fetchDataFromAPI = async () => {
             try {
-                const response = await fetch(`http://admin.emocoegypt.com/admin/public/api/models/${activeIndex}`, {
-                    headers: {
-                        'Accept-Language': i18n.language,
-                        "Cookie": "laravel_session=PGsgd3jR1M5Ss3kBJytnvHXHHLT3Xvk6bKKiazlD"
-                    }
-                });
-                const models = await response.json();
-                setModelById(models?.data);
+                const models = await fetchData(`api/models/${activeIndex}`)
+               setModelById(models?.data);
                 console.log(models);
             } catch (error) {
                 console.error("Error fetching data:", error);
