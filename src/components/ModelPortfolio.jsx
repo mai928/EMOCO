@@ -85,8 +85,8 @@ const ModelPortfolio = () => {
                                         ModelById?.map((model, index) => (
                                             <div key={index} className='text-center  m-auto'>
                                                 <img className='w-[300px] lg:w-[400px] m-auto rounded-lg' alt='img' src={`${model.photo}`} />
-                                                <h3 className='text-xl  font-bold  py-5'>{t(model.title)}</h3>
-                                                <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(model.details)}</p>
+                                                <h3 className='text-xl  font-bold  py-5'>{t(model?.title)}</h3>
+                                                <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(model?.details)}</p>
                                                 <Link href={`/portfolio/${model.id}`} className='text-white bg-secondary_color'>MORE Info</Link>
 
                                             </div>
@@ -127,9 +127,9 @@ const ModelPortfolio = () => {
                                     alt='img'
                                     src={item.photo}
                                 />
-                                <h3 className='text-xl font-bold py-5'>{t(item.title)}</h3>
+                                <h3 className='text-xl font-bold py-5'>{t(item?.title)}</h3>
                                 <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>
-                                    {t(item.details)}
+                                    {t(item?.details)}
                                 </p>
                                 <div className='my-5'>
                                     <Link href={`/portfolio/${item.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>MORE Info</Link>
