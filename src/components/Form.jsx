@@ -44,7 +44,7 @@ const Form = () => {
 
 
         try {
-            const response = await fetch('http://api.emocoegypt.com/api/contact-submit', {
+            const response = await fetch('https://api.emocoegypt.com/api/contact-submit', {
                 method: 'POST',
                 headers: myHeaders,
                 body: JSON.stringify(formData)
