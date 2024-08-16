@@ -4,6 +4,8 @@
     "OUR SERVICES":"OUR SERVICES",
     "OUR PORTFOLIO":"OUR PORTFOLIO",
     "CONTACT US":"CONTACT US",
+    "Contact Us":"Contact Us",
+    "CONTACT":"CONTACT",
     "Branches":"Branches",
     "About Us":"About Us",
     "About Emoco Egypt":"About Emoco Egypt",
@@ -15,6 +17,13 @@
     "FIRE FIGHTING SYSTEMS":"FIRE FIGHTING SYSTEMS",
     "WATER FEATURE INSTRUCTION":"WATER FEATURE INSTRUCTIONs",
     "Pool Models":"Pool Models",
-    "Model Details":"Model Details"
+    "Model Details":"Model Details",
+    "Address":"Address",
+    "Email":"Email",
+    "Phone":"Phone",
+    "Name":"Name",
+    "Message":"Message",
+    "SEND":"SEND",
+    "If you have question , feel free to get in touch":"If you have question , feel free to get in touch"
 
 }

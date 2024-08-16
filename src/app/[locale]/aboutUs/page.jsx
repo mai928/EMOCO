@@ -32,6 +32,11 @@ const AboutUs = async ({ params }) => {
      const data =  videoData?.data
 
 
+     const partner = await fetchData('api/partners', locale)
+     const partnerData =partner?.data
+
+
+
 
 
     return (
@@ -65,7 +70,7 @@ const AboutUs = async ({ params }) => {
             </div>
 
             <div className='px-20 pb-16'>
-                <Partner params={params} />
+                <Partner params={params} partnerData={partnerData} />
             </div>
         </section>
     )

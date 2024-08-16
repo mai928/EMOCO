@@ -131,7 +131,7 @@ const Navbar = () => {
             (
               <div className='flex  justify-between items-center '>
                 <Link href={'/'}>
-                  <img width={90}  src={`${data?.logo}`} alt='Logo' />
+                  <img  width={90}  height={'auto'}  src={data?.logo} alt='Logo' />
                 </Link>
 
                 <div>
@@ -143,7 +143,7 @@ const Navbar = () => {
             ) : (
               <div className={`flex justify-between ${showmenuIcon === true ? 'gap-20' : 'gap-0'}`}>
                 <Link href={'/'}>
-                  <img    width={140} className={`${isFixed && 'w-28'}`} src={`${data?.logo}`} alt='Logo' />
+                  <img    width={140}  height={'auto'}  className={`${isFixed && 'w-28'}`} src={data?.logo} alt='Logo' />
                 </Link>
 
                
@@ -218,7 +218,7 @@ const Navbar = () => {
           <div className={`sidebar ${toggle ? "open" : ""} `}>
             <div className="p-10">
               <div className="flex justify-between items-center mb-10">
-                <Link href={'/'}><img alt="logo" width={100} height={'auto'} src={`${data?.logo}`} /></Link>
+                <Link href={'/'}><img alt="logo" width={100} height={'auto'} src={data?.logo} /></Link>
                 <h1
                   className="cursor-pointer p-1 px-3 rounded-full text-white  bg-secondary_color font-semibold text-white-300"
                   onClick={() => setToggle(false)}
@@ -250,28 +250,10 @@ const Navbar = () => {
                         href={item.path}
                         onClick={() => setToggle(false)}
                       >
-                        {item.name}
+                        {t(item.name)}
                       </Link>
                     </li>
 
-                    {/* <div className='flex absolute bottom-0' key={index}>
-                      {activeIndex === item.id && item.subcatagory && (
-                        <div onMouseEnter={() => handleMouseEnter(item.id)} onMouseLeave={handleMouseLeave} className=' z-10 bg-slate-900  border-[1px] border-solid border-gray-800 rounded-md  '>
-                          {item.subcatagory.map((item, index) => (
-                            <div className='hover:bg-slate-500 rounded-t-sm ' key={index}>
-                              <ul className='py-2 p-5' key={item.title}>
-                                <li className={`text-white`} ><Link href={`/services/${decodeURIComponent(item.id)}`}>{t(item.title)}</Link></li>
-                              </ul>
-
-                              <div className={`${'border-b-[1px] border-solid border-gray-500 text-white'}`} />
-
-                            </div>
-
-
-                          ))}
-                        </div>
-                      )}
-                    </div> */}
                   </div>
 
                 ))}

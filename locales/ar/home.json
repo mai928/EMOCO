@@ -3,7 +3,9 @@
     "ABOUT US":"معلومات عنا",
     "OUR SERVICES":"خدماتنا",
     "OUR PORTFOLIO":"بورتفوليو",
-    "CONTACT US":"اتصل بنا",
+    "CONTACT US":"وسائل التواصل",
+    "Contact Us":"تواصل معنا",
+    "CONTACT":"تواصل معنا ",
     "Branches":"الفروع",
     "About Us":"معلومات عنا",
     "Our Services":"خدماتنا",
@@ -15,7 +17,14 @@
    "MAINTENANCE & OPERATION":"الصيانة والتشغيل",
    "WATER FEATURE INSTRUCTION":"تعليمات ومميزات",
    "Pool Models":"نماذج مختلفه لحمامات السباحة",
-   "Model Details":"تفاصيل الموديل"
+   "Model Details":"تفاصيل الموديل",
+   "Address":"العنوان",
+   "Email":"البريد الالكترونى",
+   "Phone":"رقم التليفون",
+   "Name":"الاسم",
+    "Message":"الرسالة",
+    "SEND":"إرسال",
+   "If you have question , feel free to get in touch":"إذا كان لديك سؤال، فلا تتردد في الاتصال بنا"
 
 
    

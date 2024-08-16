@@ -36,6 +36,27 @@ const ModelPortfolio = ({ Modelsdata }) => {
         };
 
         fetchDataFromAPI();
+    }, []);
+
+
+    useEffect(() => {
+        const fetchDataFromAPI = async () => {
+            try {
+                const response = await fetch(`http://admin.emocoegypt.com/admin/public/api/models/${activeIndex}`, {
+                    headers: {
+                        'Accept-Language': i18n.language,
+                        "Cookie": "laravel_session=PGsgd3jR1M5Ss3kBJytnvHXHHLT3Xvk6bKKiazlD"
+                    }
+                });
+                const models = await response.json();
+                setModelById(models?.data);
+                console.log(models);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchDataFromAPI();
     }, [activeIndex, i18n.language]);
 
 
