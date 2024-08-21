@@ -48,11 +48,11 @@ export const navbar = [
 			},
 		],
 	},
-	{
-		id: 4,
-		name: "OUR PORTFOLIO",
-		path: "/portfolio",
-	},
+	// {
+	// 	id: 4,
+	// 	name: "OUR PORTFOLIO",
+	// 	path: "/portfolio",
+	// },
 	{
 		id: 5,
 		name: "CONTACT US",

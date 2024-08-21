@@ -266,12 +266,6 @@ const Navbar = () => {
             <div className="p-10">
               <div className="flex justify-between items-center mb-10">
                 <Link href={'/'}><img alt="logo" width={100} height={'auto'} src={data?.logo} /></Link>
-                {/* <h1
-                  className="cursor-pointer p-1 px-3 rounded-full text-white  bg-secondary_color font-semibold text-white-300"
-                  onClick={() => setToggle(false)}
-                >
-                  x
-                </h1> */}
               </div>
 
               <ul>
