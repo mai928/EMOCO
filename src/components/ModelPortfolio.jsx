@@ -76,7 +76,7 @@ const ModelPortfolio = () => {
                                                 <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>{t(model?.details)}</p>
                                                 <div className='my-5'>
 
-                                                    <Link href={`/portfolio/${model.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>MORE Info</Link>
+                                                    <Link href={`/portfolio/${model.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>More Info</Link>
                                                 </div>
                                             </div>
                                         ))) : (
@@ -108,12 +108,12 @@ const ModelPortfolio = () => {
                                     alt='img'
                                     src={item.photo}
                                 />
-                                <h3 className='text-xl font-bold py-5'>{t(`${item?.title}`)}</h3>
+                                <h3 className='text-xl font-bold py-5'>{t(item?.title)}</h3>
                                 <p className='lg:w-1/2 m-auto font-semibold text-slate-600 text-[17px]'>
                                     {t(item?.details)}
                                 </p>
                                 <div className='my-5'>
-                                    <Link href={`/portfolio/${item.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>MORE Info</Link>
+                                    <Link href={`/portfolio/${item.id}`} className='text-white bg-secondary_color py-2 px-4 rounded-sm'>More Info</Link>
 
                                 </div>
                             </div>

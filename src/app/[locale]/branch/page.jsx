@@ -6,7 +6,7 @@ const Branch = () => {
     <section className='h-full   w-full'>
       <div className='relative w-full h-[55vh] lg:h-[60vh] '>
         <Image
-          src='/assets/web2.jpg'
+          src='/assets/pool.jpeg'
           alt='img'
           layout='fill'
           objectFit='cover'

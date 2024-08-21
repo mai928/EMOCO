@@ -10,10 +10,10 @@ export async function generateMetadata({ params }) {
     const { locale } = params
 
     return {
-        title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
-        description:  locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+        title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO" : '',
+        description: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO" : '',
         other: {
-            title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO":'',
+            title: locale === 'ar' ? 'بورتفوليو عن | EMOCO' : locale === 'en' ? "Portfolio about  | EMOCO" : locale === 'fr' ? "Portefeuille à propos  | EMOCO" : '',
         }
 
     }
@@ -25,13 +25,13 @@ const OurPortfolio = async ({ params }) => {
     const { t } = await initTranslations(locale, i18nNamespaces)
 
 
-    let data=[]
-    let Modelsdata=null
+    let data = []
+    let Modelsdata = null
     // let ModelById=null
     // let index =1
     try {
         const portfolioResponse = await fetchData(`api/portfolio`, locale);
-         data = portfolioResponse?.data;
+        data = portfolioResponse?.data;
 
         // console.log(data)
 
@@ -41,21 +41,21 @@ const OurPortfolio = async ({ params }) => {
 
 
 
-       
-        
+
+
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 
 
-   
+
 
 
     return (
         <section className='h-full relative  w-full'>
             <div className='relative w-full h-[55vh] lg:h-[60vh] '>
                 <Image
-                    src='/assets/web2.jpg'
+                    src='/assets/pool.jpeg'
                     alt='img'
                     layout='fill'
                     objectFit='cover'
@@ -71,16 +71,19 @@ const OurPortfolio = async ({ params }) => {
             </div>
 
 
-            <div className='block lg:flex justify-between gap-20 px-5 lg:px-28 py-20'>
-                <img width={500} height={600} className='bg_img' alt='img' src={`${data.photo}`} />
-                <div>
+            <div className='block w-full lg:flex justify-between gap-20 px-5 lg:px-28 py-20'>
+                <div className='lg:w-[50%]'>
+                    <img className='bg_img' alt='img' src={`${data.photo}`} />
+
+                </div>
+                <div className='lg:w-[50%]'>
                     <h2 className='text-4xl font-bold  '>
                         {t(data.title)}
                     </h2>
-                    <p className='text-gray-600 py-10'>{t(data.details)}</p>
+                    <p className='text-gray-600 py-10  font-semibold leading-10'>{t(data.details)}</p>
                 </div>
             </div>
-            <ModelPortfolio  />
+            {/* <ModelPortfolio  /> */}
 
         </section>
     )

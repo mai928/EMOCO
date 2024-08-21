@@ -43,7 +43,7 @@ const AboutUs = async ({ params }) => {
         <section className='h-full   w-full'>
             <div className='relative w-full h-[55vh] lg:h-[60vh] '>
                 <Image
-                    src='/assets/web2.jpg'
+                    src='/assets/pool.jpeg'
                     alt='img'
                     layout='fill'
                     objectFit='cover'
@@ -65,7 +65,7 @@ const AboutUs = async ({ params }) => {
                     <h2 className='text-4xl font-bold   mt-5 lg:mt-0'>
                         {t(data.title)}
                     </h2>
-                    <p className='text-gray-600 py-10'>{t(data.details)}</p>
+                    <p className='text-gray-600 text-lg py-10 leading-10'>{t(data.details)}</p>
                 </div>
             </div>
 

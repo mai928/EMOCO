@@ -62,6 +62,7 @@ const Partner = ({ partnerData}) => {
       slidesPerView={1}
       loop={true}
       autoplay={{ delay: 3000 }}
+      speed={1000}
       breakpoints={{
         640: {
           slidesPerView: 2,

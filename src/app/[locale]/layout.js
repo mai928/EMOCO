@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";// import Navbar from "@/components/Menu/Navbar";
+import { DM_Serif_Text, Inter } from "next/font/google";// import Navbar from "@/components/Menu/Navbar";
 import Footer from "@/components/Footer";
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider/TranslationsProvider";
@@ -8,7 +8,7 @@ import i18nConfig from "../../../i18nConfig";
 import "../globals.css";
 import { getMetadata } from "@/components/getMetadata";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSerifText = DM_Serif_Text({ subsets: ["latin"] ,weight:'400' });
 export function generateStaticParams() {
   return i18nConfig.locales.map(locale => (locale));
 }
@@ -43,8 +43,13 @@ export default async function RootLayout({ children, params }) {
   const { resources, t } = await initTranslations(locale, i18nNamespaces)
   // const metadata = await generateMetadata({ params });
 
+
+  const passedToggle =()=>{
+
+  }
+
   return (
-    <html lang={locale} dir={dir(locale)}>
+    <html lang={locale} dir={dir(locale)} className={dmSerifText.className}>
       {/* <head>
         <link rel="icon" href={'../../../public/assets/logo.png'} />
         <title>{metadata.title}</title>

@@ -1,26 +1,27 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { navbar } from '@/data/data';
 import logo from '../../../public/assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
 import LanguageChanger from '../LanguageChanger';
 import { useTranslation } from 'react-i18next';
-import { usePathname } from 'next/navigation';
+import { useParams, usePathname } from 'next/navigation';
 import { fetchData } from '../../../utils/api';
 
 const Navbar = () => {
 
+
   const path = usePathname()
   const newpath = path.startsWith('/') ? path.slice(1) : path
-  // console.log(newpath)
+  console.log(newpath)
   const { t, i18n } = useTranslation()
   const [activeIndex, setActiveIndex] = useState(null);
-   
-  const  [activeLink ,setActiveLink]=useState(1)
 
-  const handleLink =(id)=>{
-     setActiveLink(id)
+  const [activeLink, setActiveLink] = useState(1)
+
+  const handleLink = (id) => {
+    setActiveLink(id)
   }
 
   const handleMouseEnter = (id) => {
@@ -36,7 +37,15 @@ const Navbar = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [data, setData] = useState('')
   const [slug, setSlug] = useState('')
+  const sidebarRef = useRef(null);
 
+
+  const handleClickOutside = (event) => {
+    // If the sidebar is open and the click is outside of it, close the sidebar
+    if (toggle && sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+      setToggle(false);
+    }
+  };
 
   const handleFixed = () => {
 
@@ -121,6 +130,16 @@ const Navbar = () => {
     fetchDataService()
   }, [])
 
+  useEffect(() => {
+    // Add the event listener for clicks
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      // Remove the event listener when the component is unmounted
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [toggle]);
+
+
 
   return (
     <section className={`px-5 lg:px-28 z-10 fixed top-0 left-0 right-0 bottom-0  h-28  ${isFixed && 'bg-black fixed top-0 left-0 shadow-lg h-24'}`}>
@@ -131,7 +150,7 @@ const Navbar = () => {
             (
               <div className='flex  justify-between items-center '>
                 <Link href={'/'}>
-                  <img  width={90}  height={'auto'}  src={data?.logo} alt='Logo' />
+                  <img width={90} height={'auto'} src={data?.logo} alt='Logo' />
                 </Link>
 
                 <div>
@@ -142,16 +161,25 @@ const Navbar = () => {
               </div>
             ) : (
               <div className={`flex justify-between ${showmenuIcon === true ? 'gap-20' : 'gap-0'}`}>
-                <Link href={'/'}>
-                  <img    width={140}  height={'auto'}  className={`${isFixed && 'w-28'}`} src={data?.logo} alt='Logo' />
+                {
+                  newpath === 'branch'?(
+                    <Link className='my-8' href={'/branch'}>
+                    <img width={140} height={'auto'} className={`${isFixed && 'w-28 '}`} src='assets/sengal-remove.png' alt='Logo' />
+                  </Link>
+                  ):(
+                      <Link href={'/'}>
+                  <img width={140} height={'auto'} className={`${isFixed && 'w-28'}`} src={data?.logo} alt='Logo' />
                 </Link>
+                  )
+                }
+              
 
-               
+
 
                 <div>
                   <div className='flex   gap-6 pt-6 relative'>
                     {navbar.map((nav, index) => (
-                      <div key={nav.id} className='' onMouseEnter={() => handleMouseEnter(nav.id)} onClick={()=>handleLink(nav.id)} >
+                      <div key={nav.id} className='' onMouseEnter={() => handleMouseEnter(nav.id)} onClick={() => handleLink(nav.id)} >
                         <ul key={index} className='py-2 flex items-center  '>
                           <li className='text-wave_gray font-semibold  relative '>
                             <Link href={nav.path}>{t(nav.name)}</Link>
@@ -162,23 +190,33 @@ const Navbar = () => {
                             </div>
                           </li>
 
-                          <div onMouseEnter={() => handleMouseEnter(nav.id)} onMouseLeave={handleMouseLeave} className='absolute flex top-20' key={index}>
+                          <div
+                            onMouseEnter={() => handleMouseEnter(nav.id)}
+                            onMouseLeave={handleMouseLeave}
+                            key={index}
+                            className="absolute  top-20  flex  transition-all duration-500 ease-in-out"
+                            style={{
+                              opacity: activeIndex === nav.id ? '1' : '0',
+                              transform: activeIndex === nav.id ? 'translateY(0)' : 'translateY(-20px)',
+                            }}
+                        >
                             {activeIndex === nav.id && nav.subcatagory && (
-                              <div className=' z-10 bg-slate-900  border-[1px] border-solid border-gray-800 rounded-md  '>
+                              <div className="z-10  border-[1px] border-solid bg-slate-50 bg-opacity-50  rounded-md">
                                 {nav.subcatagory.map((item, index) => (
-                                  <div className='hover:bg-slate-500 rounded-t-sm ' key={index}>
-                                    <ul className='py-2 p-5' key={item.title}>
-
-                                      <li className={`text-white`} >
+                                  <div
+                                    className="relative hover:bg-slate-200 hover:bg-opacity-30 rounded-t-sm group"
+                                    key={index}
+                                  >
+                                    <ul
+                                      className="py-2 p-5"
+                                      key={item.title}
+                                    >
+                                      <li className="text-black font-bold">
                                         <Link href={generateLink(nav.path, slug[index]?.slug)}>{t(item.title)}</Link>
                                       </li>
                                     </ul>
-
-                                    <div className={`${'border-b-[1px] border-solid border-gray-500 text-white'}`} />
-
+                                    <div className="border-b-[1px] border-solid border-gray-200 text-white" />
                                   </div>
-
-
                                 ))}
                               </div>
                             )}
@@ -214,17 +252,17 @@ const Navbar = () => {
 
 
         {/* sidebar */}
-        <div>
-          <div className={`sidebar ${toggle ? "open" : ""} `}>
+        <div ref={sidebarRef}>
+          <div className={`sidebar ${toggle ? "open" : "close"} `}>
             <div className="p-10">
               <div className="flex justify-between items-center mb-10">
                 <Link href={'/'}><img alt="logo" width={100} height={'auto'} src={data?.logo} /></Link>
-                <h1
+                {/* <h1
                   className="cursor-pointer p-1 px-3 rounded-full text-white  bg-secondary_color font-semibold text-white-300"
                   onClick={() => setToggle(false)}
                 >
                   x
-                </h1>
+                </h1> */}
               </div>
 
               <ul>

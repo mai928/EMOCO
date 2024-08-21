@@ -60,13 +60,8 @@ export const navbar = [
 	},
 	{
 		id: 6,
-		name: "Branches",
+		name: "EMOCO SENEGAL",
 		path: "/branch",
-		subcatagory: [
-			{
-				title: "EMOCO Senegal",
-			},
-		]
 	}
 ];
 

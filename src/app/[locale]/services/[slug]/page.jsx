@@ -59,8 +59,8 @@ const ServiceDetails = async ({ params }) => {
         </div>
 
         <div className='w-full h-[80%] lg:w-[50%] '>
-        <h1 className='text-3xl font-semibold py-3'>{ServiceDetails.title}</h1>
-          <p className='text-slate-700 text-[15px] leading-8 font-semibold'>{ServiceDetails.details}</p>
+        <h1 className='text-4xl font-semibold py-5'>{ServiceDetails.title}</h1>
+          <p className='text-slate-700 text-lg leading-8 font-semibold'>{ServiceDetails.details}</p>
         </div>
 
       </div>
