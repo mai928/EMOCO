@@ -11,10 +11,10 @@ export async function generateMetadata({ params }) {
     const { locale } = params
 
     return {
-        title: locale === 'ar' ? 'خدمات  | EMOCO' : locale === 'en' ? "Services   | EMOCO" : locale === 'fr' ? "prestations   | EMOCO":'',
-        description:  locale === 'ar' ? 'خدمات  | EMOCO' : locale === 'en' ? "Services   | EMOCO" : locale === 'fr' ? "prestations   | EMOCO":'',
+        title: locale === 'ar' ? 'خدمات  | EMOCO' : locale === 'en' ? "Services   | EMOCO" : locale === 'fr' ? "prestations   | EMOCO" : '',
+        description: locale === 'ar' ? 'خدمات  | EMOCO' : locale === 'en' ? "Services   | EMOCO" : locale === 'fr' ? "prestations   | EMOCO" : '',
         other: {
-            title: locale === 'ar' ? 'خدمات  | EMOCO' : locale === 'en' ? "Services   | EMOCO" : locale === 'fr' ? "prestations   | EMOCO":'',
+            title: locale === 'ar' ? 'خدمات  | EMOCO' : locale === 'en' ? "Services   | EMOCO" : locale === 'fr' ? "prestations   | EMOCO" : '',
         }
 
     }
@@ -29,8 +29,8 @@ const Services = async ({ params }) => {
         return text?.split(' ').slice(0, wordCount).join(' ') + '...';
     };
 
-       const response= await fetchData('api/services',locale)
-        const servesData=  response.data
+    const response = await fetchData('api/services', locale)
+    const servesData = response.data
 
     return (
         <section className='h-full   w-full'>
@@ -56,7 +56,11 @@ const Services = async ({ params }) => {
                 {
                     servesData?.map((item, index) => (
                         <div key={index} className='border-[2px] border-solid border-gray-200 rounded-lg bg-slate-100'>
-                            <img  alt='img' className=' h-[300px] object-cover rounded-t-lg' src={item.photo} />
+                            <img
+                                alt="img"
+                                className="h-[300px] object-cover rounded-t-lg transform transition-transform duration-300 ease-out hover:scale-110 cursor-pointer"
+                                src={item.photo}
+                            />
                             <div className='ms-3 my-5'>
                                 <h3 className='font-bold'>{t(item.title)}</h3>
                                 {/* <p className='text-[15px]  py-3 text-gray-700 font-semibold'>{t(item.desc)}</p> */}
