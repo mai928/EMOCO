@@ -149,9 +149,18 @@ const Navbar = () => {
           showmenuIcon === true ?
             (
               <div className='flex  justify-between items-center '>
-                <Link href={'/'}>
-                  <img width={90} height={'auto'} src={data?.logo} alt='Logo' />
-                </Link>
+                {
+                  newpath === 'branch' ? (
+                    <Link className='my-8' href={'/branch'}>
+                      <img width={140} height={'auto'} className={`${isFixed && 'w-28 '}`} src='assets/sengal-remove.png' alt='Logo' />
+                    </Link>
+                  ) : (
+                    <Link href={'/'}>
+                      <img width={90} height={'auto'} src={data?.logo} alt='Logo' />
+                    </Link>
+                  )
+                }
+
 
                 <div>
                   <svg xmlns="http://www.w3.org/2000/svg" fill='white' onClick={() => setToggle(!toggle)} width={25} height={25} viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
@@ -162,17 +171,17 @@ const Navbar = () => {
             ) : (
               <div className={`flex justify-between ${showmenuIcon === true ? 'gap-20' : 'gap-0'}`}>
                 {
-                  newpath === 'branch'?(
+                  newpath === 'branch' ? (
                     <Link className='my-8' href={'/branch'}>
-                    <img width={140} height={'auto'} className={`${isFixed && 'w-28 '}`} src='assets/sengal-remove.png' alt='Logo' />
-                  </Link>
-                  ):(
-                      <Link href={'/'}>
-                  <img width={140} height={'auto'} className={`${isFixed && 'w-28'}`} src={data?.logo} alt='Logo' />
-                </Link>
+                      <img width={140} height={'auto'} className={`${isFixed && 'w-28 '}`} src='assets/sengal-remove.png' alt='Logo' />
+                    </Link>
+                  ) : (
+                    <Link href={'/'}>
+                      <img width={140} height={'auto'} className={`${isFixed && 'w-28'}`} src={data?.logo} alt='Logo' />
+                    </Link>
                   )
                 }
-              
+
 
 
 
@@ -199,7 +208,7 @@ const Navbar = () => {
                               opacity: activeIndex === nav.id ? '1' : '0',
                               transform: activeIndex === nav.id ? 'translateY(0)' : 'translateY(-20px)',
                             }}
-                        >
+                          >
                             {activeIndex === nav.id && nav.subcatagory && (
                               <div className="z-10  border-[1px] border-solid bg-slate-50 bg-opacity-50  rounded-md">
                                 {nav.subcatagory.map((item, index) => (
