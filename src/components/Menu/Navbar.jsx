@@ -221,17 +221,16 @@ const Navbar = () => {
                                       key={item.title}
                                     >
                                       <li
-                                        className="text-black font-bold "
+                                        className="text-black font-bold  transition-all duration-500 ease-in-out"
                                       
                                     
-                                        style={{
-                                          opacity: activeIndex === nav.id ? '1' : '0',
-                                          transform: activeIndex === nav.id ? 'translateY(0)' : 'translateY(10px)',
-                                          transition: `opacity 0.5s ease ${subindex * 0.1}s, transform 0.5s ease ${subindex * 0.1}s`,
-                                          // transformOrigin: 'right center',
-                                        }}
+                                        // style={{
+                                        //   opacity: activeIndex === nav.id ? '1' : '0',
+                                        //   transform: activeIndex === nav.id ? 'translateY(0)' : 'translateY(-10px)',
+                                        //   // transition: `opacity 0.5s ease ${subindex * 0.1}s, transform 0.5s ease ${subindex * 0.1}s`,
+                                        // }}
                                       >
-                                        <Link href={generateLink(nav.path, slug[index]?.slug)}>{t(item.title)}</Link>
+                                        <Link className='animatedText' href={generateLink(nav.path, slug[index]?.slug)}>{t(item.title)}</Link>
                                       </li>
                                     </ul>
                                     <div className="border-b-[1px] border-solid border-gray-200 text-white" />

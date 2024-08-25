@@ -15,7 +15,21 @@ font-family: 'DM Serif Text', Cambria, Cochin, Georgia, Times, 'Times New Roman'
 
 }
 
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+}
 
+100% {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.animatedText {
+  animation: fadeInUp 1s ease-in-out forwards;
+}
 
 .swiper-slide-custom {
   position: relative;
