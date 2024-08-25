@@ -11,21 +11,7 @@ import 'swiper/css/autoplay'
 
 const Partner = ({ partnerData }) => {
 
-  // const { locale } = params
 
-  // const  [partners ,setPartner]=useState([])
-
-  // useEffect(() => {
-  //   const sliderLogos = async () => {
-  //     const data = await fetchData('api/partners', locale)
-  //          setPartner(data?.data)
-  //   }
-
-  //   sliderLogos()
-
-  // }, [])
-
-  //  console.log( 'partners:::',partners)
 
   const breakpoints = {
     1024: {
@@ -56,14 +42,13 @@ const Partner = ({ partnerData }) => {
 
   return (
     <Swiper
-      className='overflow-auto'
+      className='overflow-hidden'
       modules={[Autoplay]}
       spaceBetween={10}
       slidesPerView={1}
       loop={true}
-      speed={2000}
-
-      autoplay={{ delay: 50 }}
+      speed={2500}
+      autoplay={{ delay: 0 }}
       breakpoints={{
         640: {
           slidesPerView: 2,
