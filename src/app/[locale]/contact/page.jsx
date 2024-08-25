@@ -66,7 +66,7 @@ const Contact = async ({ params }) => {
                 <div className='  '>
                   {
                     settings.addresses.map((item ,index) => (
-                      <p key={index} className='text-slate-600 text-sm  font-semibold py-1'>Cairo : {item}</p>
+                      <p key={index} className='text-slate-600 text-sm  font-semibold py-1'>{item}</p>
                     ))
                   }
                   <p className='text-slate-600 text-sm  font-semibold py-2'>Senegal</p>
