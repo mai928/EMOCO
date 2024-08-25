@@ -62,13 +62,14 @@ const Contact = async ({ params }) => {
               <div className='border-l-[1px] border-solid border-gray-700 h-14' />
 
               <div className='text-slate-800'>
-                <p className='font-semibold'>{t("Address")}</p>
+                <p className='font-semibold'>{t("Branches")}</p>
                 <div className='  '>
                   {
                     settings.addresses.map((item ,index) => (
-                      <p key={index} className='text-slate-600 text-sm  font-semibold py-1'>{item}</p>
+                      <p key={index} className='text-slate-600 text-sm  font-semibold py-1'>Cairo : {item}</p>
                     ))
                   }
+                  <p className='text-slate-600 text-sm  font-semibold py-2'>Senegal</p>
                 </div>
               </div>
             </div>

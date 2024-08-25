@@ -190,7 +190,7 @@ const Navbar = () => {
                     {navbar.map((nav, index) => (
                       <div key={nav.id} className='' onMouseEnter={() => handleMouseEnter(nav.id)} onClick={() => handleLink(nav.id)} >
                         <ul key={index} className='py-2 flex items-center  '>
-                          <li className='text-wave_gray font-semibold  relative '>
+                          <li className='text-wave_gray font-semibold text-lg  relative '>
                             <Link href={nav.path}>{t(nav.name)}</Link>
                             <div>
                               {
@@ -211,16 +211,26 @@ const Navbar = () => {
                           >
                             {activeIndex === nav.id && nav.subcatagory && (
                               <div className="z-10  border-[1px] border-solid bg-slate-50 bg-opacity-50  rounded-md">
-                                {nav.subcatagory.map((item, index) => (
+                                {nav.subcatagory.map((item, subindex) => (
                                   <div
                                     className="relative hover:bg-slate-200 hover:bg-opacity-30 rounded-t-sm group"
-                                    key={index}
+                                    key={subindex}
                                   >
                                     <ul
                                       className="py-2 p-5"
                                       key={item.title}
                                     >
-                                      <li className="text-black font-bold">
+                                      <li
+                                        className="text-black font-bold "
+                                      
+                                    
+                                        style={{
+                                          opacity: activeIndex === nav.id ? '1' : '0',
+                                          transform: activeIndex === nav.id ? 'translateY(0)' : 'translateY(10px)',
+                                          transition: `opacity 0.5s ease ${subindex * 0.1}s, transform 0.5s ease ${subindex * 0.1}s`,
+                                          // transformOrigin: 'right center',
+                                        }}
+                                      >
                                         <Link href={generateLink(nav.path, slug[index]?.slug)}>{t(item.title)}</Link>
                                       </li>
                                     </ul>
@@ -230,6 +240,7 @@ const Navbar = () => {
                               </div>
                             )}
                           </div>
+
 
 
 

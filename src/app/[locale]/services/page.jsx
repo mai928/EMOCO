@@ -56,17 +56,21 @@ const Services = async ({ params }) => {
                 {
                     servesData?.map((item, index) => (
                         <div key={index} className='border-[2px] border-solid border-gray-200 rounded-lg bg-slate-100'>
-                            <img
-                                alt="img"
-                                className="h-[300px] object-cover rounded-t-lg transform transition-transform duration-300 ease-out hover:scale-110 cursor-pointer"
-                                src={item.photo}
-                            />
-                            <div className='ms-3 my-5'>
-                                <h3 className='font-bold'>{t(item.title)}</h3>
+                            {/* transform transition-transform duration-300 ease-out hover:scale-110 */}
+                            <div className="overflow-hidden rounded-t-lg">
+                                <img
+                                    alt="img"
+                                    className="w-[500px] h-[300px] object-cover transform transition-transform duration-300 ease-out hover:scale-110 cursor-pointer"
+                                    src={item.photo}
+                                />
+                            </div>
+                            <div className='ms-3 my-10'>
+                                <h3 className='font-bold text-xl'>{t(item.title)}</h3>
                                 {/* <p className='text-[15px]  py-3 text-gray-700 font-semibold'>{t(item.desc)}</p> */}
-                                <div className='text-[15px]  py-3 text-gray-700 font-semibold' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(truncateText(item.details || '', 20))) }} />
-                                <Link className='flex justify-center' href={`/services/${item.slug}`}>
-                                    <svg className='bg-secondary_color fill-white px-2 rounded-full ' width={40} height={40} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg>
+                                <div className='text-[15px]  py-3 text-gray-700 font-semibold h-28' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(truncateText(item.details || '', 20))) }} />
+                                <Link className=' py-3 px-4  rounded-sm bg-secondary_color hover:bg-footer_color hover:font-semibold  text-white ' href={`/services/${item.slug}`}>
+                                    {/* <svg className='bg-secondary_color fill-white px-2 rounded-full ' width={40} height={40} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z" /></svg> */}
+                                    Read More
                                 </Link>
                             </div>
 

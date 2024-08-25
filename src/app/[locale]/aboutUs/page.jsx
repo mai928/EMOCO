@@ -3,6 +3,7 @@ import Partner from '@/components/Partner'
 import Image from 'next/image'
 import React from 'react'
 import { fetchData } from '../../../../utils/api'
+import DOMPurify from 'isomorphic-dompurify'
 
 
 
@@ -62,10 +63,11 @@ const AboutUs = async ({ params }) => {
             <div className='block lg:flex justify-between lg:gap-20 px-5 lg:px-28 py-20'>
                 <img alt='img' width={500} height={600} className=' bg_img w-full h-full' src={`${data.photo}`} />
                 <div className='text-center lg:text-start'>
-                    <h2 className='text-4xl font-bold   mt-5 lg:mt-0'>
+                    <h2 className='text-6xl font-bold  font-shelley  mt-5 lg:mt-0'>
                         {t(data.title)}
                     </h2>
-                    <p className='text-gray-600 text-lg py-10 leading-10'>{t(data.details)}</p>
+                    <div className='text-gray-600 text-lg py-10 leading-10' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(data.details)) }}/>
+                    {/* <p >{t(data.details)}</p> */}
                 </div>
             </div>
 

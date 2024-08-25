@@ -1,16 +1,16 @@
 'use client'
-import React  from 'react'
+import React from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import 'swiper/css/navigation' 
+import 'swiper/css/navigation'
 import "swiper/css/pagination";
 import 'swiper/css/autoplay'
 
 
 
-const Partner = ({ partnerData}) => {
- 
+const Partner = ({ partnerData }) => {
+
   // const { locale } = params
 
   // const  [partners ,setPartner]=useState([])
@@ -61,8 +61,9 @@ const Partner = ({ partnerData}) => {
       spaceBetween={10}
       slidesPerView={1}
       loop={true}
-      autoplay={{ delay: 3000 }}
-      speed={1000}
+      speed={2000}
+
+      autoplay={{ delay: 50 }}
       breakpoints={{
         640: {
           slidesPerView: 2,
