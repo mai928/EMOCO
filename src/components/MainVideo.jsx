@@ -38,7 +38,7 @@ const MainVideo = () => {
               }
             });
           },
-          { threshold: 0.5 }
+          { threshold: 0.9 }
         );
     
         observer.observe(videoRef.current);
@@ -53,6 +53,7 @@ const MainVideo = () => {
         className=" w-full h-full absolute top-0 left-0 lg:object-cover object-fill"
         src={data.home_video}
         autoPlay
+        preload="metadata"
         loop
         muted
         playsInline
