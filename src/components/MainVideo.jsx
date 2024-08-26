@@ -1,22 +1,60 @@
-import React from 'react'
+'use client'
+import React, { useEffect, useRef, useState } from 'react'
 import { fetchData } from '../../utils/api'
+import { useTranslation } from 'react-i18next'
 
-const MainVideo = async({params}) => {
-       const {locale}=params
-       console.log(locale)
-     const videoData = await fetchData(`api/settings`,locale)
-    //  console.log('videoData::::',videoData?.data)
-      const data =  videoData?.data
+const MainVideo = () => {
+  const { t, i18n } = useTranslation()
+
+
+
+      const [data ,setData]=useState('')
+      const videoRef = useRef(null);
+
+
+      useEffect(() => {
+        const fetchDataFromAPI = async () => {
+            try {
+                const result = await fetchData(`api/settings`,i18n.language);
+                setData(result?.data)
+
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+
+        fetchDataFromAPI();
+    }, []);
+
+
+
+
+      useEffect(() => {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                videoRef.current.play();
+              }
+            });
+          },
+          { threshold: 0.5 }
+        );
+    
+        observer.observe(videoRef.current);
+    
+        return () => observer.disconnect();
+      }, []);
          
   return (
     <div className='w-full h-screen z-0  relative'>
       <video
+      ref={videoRef}
         className=" w-full h-full absolute top-0 left-0 lg:object-cover object-fill"
         src={data.home_video}
         autoPlay
         loop
         muted
-        // preload='auto'
         playsInline
       />
       {/* <div className='absolute left-0 top-[50%]  bg-opacity-40 bg-footer_color w-full h-[10%] lg:h-[20%]' >
