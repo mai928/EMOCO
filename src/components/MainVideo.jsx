@@ -8,51 +8,65 @@ const MainVideo = () => {
 
 
 
-      const [data ,setData]=useState('')
-      const videoRef = useRef(null);
+  const [data, setData] = useState('')
+  const [shouldAutoPlay, setShouldAutoPlay] = useState(true)
+
+  const videoRef = useRef(null);
 
 
-      useEffect(() => {
-        const fetchDataFromAPI = async () => {
-            try {
-                const result = await fetchData(`api/settings`,i18n.language);
-                setData(result?.data)
+  useEffect(() => {
+    const fetchDataFromAPI = async () => {
+      try {
+        const result = await fetchData(`api/settings`, i18n.language);
+        setData(result?.data)
 
-            } catch (error) {
-                console.error("Error fetching data:", error);
-            }
-        };
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-        fetchDataFromAPI();
-    }, []);
-
-
+    fetchDataFromAPI();
+  }, []);
 
 
-      useEffect(() => {
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                videoRef.current.play();
-              }
-            });
-          },
-          { threshold: 0.9 }
-        );
-    
-        observer.observe(videoRef.current);
-    
-        return () => observer.disconnect();
-      }, []);
-         
+
+
+  useEffect(() => {
+    // Check network information
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection
+    if (connection) {
+      // Disable autoplay if the connection is slow (e.g., 3G or worse)
+      const slowConnections = ['slow-2g', '2g', '3g']
+      if (slowConnections.includes(connection.effectiveType)) {
+        setShouldAutoPlay(false)
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current) {
+            videoRef.current.play()
+          }
+        })
+      },
+      { threshold: 0.4 }
+    )
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current)
+    }
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className='w-full h-screen z-0  relative'>
       <video
-      ref={videoRef}
+        ref={videoRef}
         className=" w-full h-full absolute top-0 left-0 lg:object-cover object-fill"
         src={data.home_video}
-        autoPlay
+        autoPlay={shouldAutoPlay}
         preload="metadata"
         loop
         muted
@@ -64,7 +78,7 @@ const MainVideo = () => {
 
 
     </div>
-    )
+  )
 }
 
 export default MainVideo
