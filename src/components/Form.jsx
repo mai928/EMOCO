@@ -56,10 +56,10 @@ const Form = () => {
             if (response.status) {
                 setResponseMessage('Message sent successfully!');
                 setFormData({
-                    name: '',
-                    email: '',
-                    phone: '',
-                    message: '',
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
                 });
             } else {
                 console.error('Failed to send message. Please try again.');
@@ -79,22 +79,6 @@ const Form = () => {
     };
 
 
-    const [data, setData] = useState(null);
-
-    useEffect(() => {
-        const fetchDataFromAPI = async () => {
-            try {
-                const result = await fetchData('api/contact-submit');
-                // setData(result?.data[0]);
-                console.log('result::', result)
-            } catch (error) {
-                console.error("Error fetching data:", error);
-                // setError(error);
-            }
-        };
-
-        fetchDataFromAPI();
-    }, []);
 
     return (
         <form onSubmit={handleSubmit} className=' w-full lg:w-2/3 pb-10 lg:pb-0 '>
