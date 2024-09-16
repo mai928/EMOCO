@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preview": "next build && next start"
+
   },
   "dependencies": {
     "i18next": "^23.12.2",

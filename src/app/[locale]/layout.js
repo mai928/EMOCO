@@ -7,16 +7,39 @@ import Navbar from "@/components/Menu/Navbar";
 import i18nConfig from "../../../i18nConfig";
 import "../globals.css";
 import { getMetadata } from "@/components/getMetadata";
+import { icons } from "@/data/data";
 
-const dmSerifText = DM_Serif_Text({ subsets: ["latin"] ,weight:'400' });
+const dmSerifText = DM_Serif_Text({ subsets: ["latin"], weight: '400' });
 export function generateStaticParams() {
   return i18nConfig.locales.map(locale => (locale));
 }
 
-export const metadata = {
-  title: "EMOCO",
-  description: "Engineered Modern Operations",
-};
+export async function generateMetadata() {
+  try {
+    const data = await getMetadata()
+
+    return {
+      title: "EMOCO",
+      description: "Engineered Modern Operations",
+      icons: {
+        icon: [{
+          url: data.logo || "/favicon.ico"
+        }]
+      }
+    }
+  } catch (error) {
+    return {
+      title: "EMOCO",
+      description: "Engineered Modern Operations",
+      icons: {
+        icon: [{
+          url: "/favicon.ico"
+        }]
+      }
+    }
+  }
+
+}
 
 const i18nNamespaces = ["home"];
 
@@ -27,13 +50,9 @@ export default async function RootLayout({ children, params }) {
   const { resources, t } = await initTranslations(locale, i18nNamespaces)
 
 
-  const passedToggle =()=>{
-
-  }
-
   return (
     <html lang={locale} dir={dir(locale)} className={dmSerifText.className}>
-    
+
       <body >
 
         <TranslationsProvider
@@ -44,7 +63,7 @@ export default async function RootLayout({ children, params }) {
           <section className="relative">
             <Navbar />
             {children}
-            <Footer  params={params}/>
+            <Footer params={params} />
           </section>
 
         </TranslationsProvider>

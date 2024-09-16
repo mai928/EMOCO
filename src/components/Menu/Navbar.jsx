@@ -8,6 +8,7 @@ import LanguageChanger from '../LanguageChanger';
 import { useTranslation } from 'react-i18next';
 import { useParams, usePathname } from 'next/navigation';
 import { fetchData } from '../../../utils/api';
+import Sidebar from './Sidebar';
 
 const Navbar = () => {
 
@@ -222,15 +223,8 @@ const Navbar = () => {
                                     >
                                       <li
                                         className="text-black font-bold  transition-all duration-500 ease-in-out"
-                                      
-                                    
-                                        // style={{
-                                        //   opacity: activeIndex === nav.id ? '1' : '0',
-                                        //   transform: activeIndex === nav.id ? 'translateY(0)' : 'translateY(-10px)',
-                                        //   // transition: `opacity 0.5s ease ${subindex * 0.1}s, transform 0.5s ease ${subindex * 0.1}s`,
-                                        // }}
                                       >
-                                        <Link className='animatedText' href={generateLink(nav.path, slug[index]?.slug)}>{t(item.title)}</Link>
+                                        <Link className='animatedText' href={generateLink(nav.path, slug[subindex]?.slug)}>{t(item.title)}</Link>
                                       </li>
                                     </ul>
                                     <div className="border-b-[1px] border-solid border-gray-200 text-white" />
@@ -240,20 +234,12 @@ const Navbar = () => {
                             )}
                           </div>
 
-
-
-
-
                           {
                             nav.subcatagory && (<svg xmlns="http://www.w3.org/2000/svg" width={15} height={15} className='fill-white' viewBox="0 0 320 512"><path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z" /></svg>)
                           }
 
 
                         </ul>
-
-
-
-
                       </div>
                     ))}
 
@@ -268,70 +254,9 @@ const Navbar = () => {
               </div>
             )
         }
-
-
         {/* sidebar */}
         <div ref={sidebarRef}>
-          <div className={`sidebar ${toggle ? "open" : "close"} `}>
-            <div className="p-10">
-              <div className="flex justify-between items-center mb-10">
-                <Link href={'/'}><img alt="logo" width={100} height={'auto'} src={data?.logo} /></Link>
-              </div>
-
-              <ul>
-                {navbar.map((item, index) => (
-                  <div onMouseEnter={() => handleMouseEnter(item.id)} onMouseLeave={handleMouseLeave} key={item.name} className="flex items-center mt-7">
-                    <div className="p-1 bg-white-400 rounded-full me-4">
-                      <svg
-
-                        xmlns="http://www.w3.org/2000/svg"
-                        width={13}
-                        height={13}
-                        className="fill-secondary_color  "
-                        viewBox="0 0 320 512"
-                      >
-                        <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
-                      </svg>
-                    </div>
-                    <li className='relative'>
-
-                      <Link
-
-                        className="text-white text-xl font-semibold   hover:text-primary-500"
-                        href={item.path}
-                        onClick={() => setToggle(false)}
-                      >
-                        {t(item.name)}
-                      </Link>
-                    </li>
-
-                  </div>
-
-                ))}
-              </ul>
-
-              <div className="flex items-center mt-7">
-                <div className="p-1 bg-white-400 rounded-full me-4">
-                  <svg
-
-                    xmlns="http://www.w3.org/2000/svg"
-                    width={13}
-                    height={13}
-                    className="fill-secondary_color  "
-                    viewBox="0 0 320 512"
-                  >
-                    <path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z" />
-                  </svg>
-
-
-                </div>
-                <LanguageChanger />
-
-
-
-              </div>
-            </div>
-          </div>
+          <Sidebar toggle={toggle} setToggle={setToggle} t={t} handleMouseEnter={handleMouseEnter} handleMouseLeave={handleMouseLeave} data={data}/>
         </div>
 
       </div>
