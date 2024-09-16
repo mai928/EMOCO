@@ -39,7 +39,7 @@ const ServiceDetails = async ({ params }) => {
     <section>
       <div className='relative w-full h-[55vh] lg:h-[60vh] '>
         <Image
-          src='/assets/web2.jpg'
+          src='/assets/Scope1.jpg'
           alt='img'
           layout='fill'
           objectFit='cover'
@@ -49,6 +49,8 @@ const ServiceDetails = async ({ params }) => {
                (max-width: 1200px) 50vw,
                "
         />
+                <div className='absolute inset-0 bg-black opacity-30' />
+
         <h1 className='absolute left-7 bottom-20 lg:bottom-32 lg:start-96 text-3xl lg:text-5xl text-white font-semibold'>
           {t("services details")}
         </h1>
