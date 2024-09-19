@@ -48,21 +48,21 @@ const Navbar = () => {
     }
   };
 
-  const handleFixed = () => {
+  // const handleFixed = () => {
 
-    const handleScroll = () => {
-      if (window.scrollY >= 100) {
-        setIsFixed(true);
-      } else {
-        setIsFixed(false);
-      }
-    };
+  //   const handleScroll = () => {
+  //     if (window.scrollY >= 100) {
+  //       setIsFixed(true);
+  //     } else {
+  //       setIsFixed(false);
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }
+  //   window.addEventListener('scroll', handleScroll);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }
 
   const generateLink = (basePath, title) => {
     return `${basePath}/${encodeURIComponent(title)}`;
@@ -70,13 +70,13 @@ const Navbar = () => {
 
   useEffect(() => {
 
-    if (window.scrollY >= 100) {
-      setIsFixed(true);
-    } else {
-      setIsFixed(false);
-    }
+    // if (window.scrollY >= 100) {
+    //   setIsFixed(true);
+    // } else {
+    //   setIsFixed(false);
+    // }
 
-    handleFixed()
+    // handleFixed()
 
 
     const handleSize = () => {
@@ -143,7 +143,7 @@ const Navbar = () => {
 
 
   return (
-    <section className={`px-5 lg:px-28 z-10 fixed top-0 left-0 right-0 bottom-0  h-28  ${isFixed && 'bg-black fixed top-0 left-0 shadow-lg h-24'}`}>
+    <section className={`px-5 lg:px-28 z-10 absolute top-0 left-0 right-0 bottom-0  h-28`}>
 
       <div>
         {
@@ -200,7 +200,7 @@ const Navbar = () => {
                             </div>
                           </li>
 
-                          <div
+                          {/* <div
                             onMouseEnter={() => handleMouseEnter(nav.id)}
                             onMouseLeave={handleMouseLeave}
                             key={index}
@@ -236,7 +236,7 @@ const Navbar = () => {
 
                           {
                             nav.subcatagory && (<svg xmlns="http://www.w3.org/2000/svg" width={15} height={15} className='fill-white' viewBox="0 0 320 512"><path d="M182.6 470.6c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-9.2-9.2-11.9-22.9-6.9-34.9s16.6-19.8 29.6-19.8l256 0c12.9 0 24.6 7.8 29.6 19.8s2.2 25.7-6.9 34.9l-128 128z" /></svg>)
-                          }
+                          } */}
 
 
                         </ul>

@@ -54,17 +54,15 @@ const AboutUs = async ({ params }) => {
                (max-width: 1200px) 50vw,
                "
                 />
-                <div className='absolute inset-0 bg-black opacity-30'/>
-                <h1 className='absolute left-7 bottom-20 lg:bottom-32 lg:start-96 text-3xl lg:text-5xl text-white font-semibold'>
-                    {t("About Us")}
-                </h1>
+                <div className='absolute inset-0 bg-black opacity-20'/>
+               
             </div>
 
 
             <div className='block lg:flex justify-between lg:gap-20 px-5 lg:px-28 py-20'>
                 <img alt='img' width={500} height={600} className=' bg_img w-full h-full' src={`${data.photo}`} />
                 <div className='text-center lg:text-start'>
-                    <h2 className='text-6xl font-bold  font-shelley  mt-5 lg:mt-0'>
+                    <h2 className='text-[3.5rem] font-bold  uppercase  mt-5 lg:mt-0'>
                         {t(data.title)}
                     </h2>
                     <div className='text-gray-600 text-lg py-10 leading-10' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(data.details)) }}/>

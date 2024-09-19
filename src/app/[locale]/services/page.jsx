@@ -34,7 +34,7 @@ const Services = async ({ params }) => {
 
     return (
         <section className='h-full   w-full'>
-            <div className='relative w-full h-[55vh] lg:h-[80vh] '>
+             <div className='relative w-full h-[55vh] lg:h-[80vh] '>
                 <Image
                     src='/assets/Scope1.jpg'
                     alt='img'
@@ -46,14 +46,15 @@ const Services = async ({ params }) => {
                (max-width: 1200px) 50vw,
                "
                 />
-                <div className='absolute inset-0 bg-black opacity-30'/>
-                <h1 className='absolute left-7 bottom-20 lg:bottom-32 lg:start-96 text-3xl lg:text-5xl text-white font-semibold'>
-                    {t("Our Services")}
-                </h1>
-            </div>
+                <div className='absolute inset-0 bg-black opacity-20'/>
+               </div>
 
 
-            <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-16 px-5 lg:px-28 py-20'>
+            <h1 className='text-center text-4xl  font-semibold py-14'>
+                {t("Our Services")}
+            </h1>
+
+            <div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3  gap-16 px-5 lg:px-28  pb-20'>
                 {
                     servesData?.map((item, index) => (
                         <div key={index} className='border-[2px] border-solid border-gray-200 rounded-lg bg-slate-100'>
