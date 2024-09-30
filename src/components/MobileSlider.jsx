@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay ,EffectFade } from "swiper/modules";
+import { Autoplay, EffectFade } from "swiper/modules";
 import "swiper/css";
 import 'swiper/css/navigation'
 import "swiper/css/pagination";
@@ -39,7 +39,7 @@ const MobileSlider = () => {
     <section className='w-full h-screen z-0 relative overflow-hidden'>
       <Swiper
         className='overflow-hidden'
-        modules={[Autoplay ,EffectFade]}
+        modules={[Autoplay, EffectFade]}
         slidesPerView={1}
         loop={true}
         speed={4000}
@@ -52,7 +52,8 @@ const MobileSlider = () => {
       >
         {slider?.slice().reverse().map((partner, index) => (
           <SwiperSlide key={index}>
-            <img className='w-full h-full mobile-img' src={`${partner.photo}`} alt={`Partner ${index + 1}`} />
+            <img
+               className='lg:w-full lg:h-full   h-[100vh] object-fill lg:object-cover' src={`${partner.photo}`} alt={`Partner ${index + 1}`} />
           </SwiperSlide>
         ))}
       </Swiper>

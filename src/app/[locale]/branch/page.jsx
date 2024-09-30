@@ -30,7 +30,7 @@ const Branch = async ({ params }) => {
         <h1 className=' text-2xl lg:text-4xl font-semibold py-10'>{t("Emoco Sénégal")}</h1>
         <div className=' block lg:flex gap-20 '>
           <div className='lg:w-[50%]'>
-            <img src={branchData?.photo} />
+            <img className='w-full h-full' src={branchData?.photo} />
 
           </div>
 
@@ -41,10 +41,6 @@ const Branch = async ({ params }) => {
 
               ))
             }
-            {/* <p className='text-white bg-secondary_color py-2 my-5 text-xl px-10'> Fournitures et installation  <span>            (équipements -Produits chimiques - Plomberie)
-            </span></p>
-            <p className='text-white bg-secondary_color py-2 my-5 text-xl px-10'>  Conception et ingénierie</p>
-            <p className='text-white bg-secondary_color py-2 my-5 text-xl px-10'>Traitement de l'eau</p> */}
           </div>
         </div>
 
