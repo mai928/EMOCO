@@ -36,8 +36,8 @@ const Branch = async ({ params }) => {
 
           <div className='text-start lg:w-[50%]'>
             {
-              branchData?.details?.map((item)=>(
-                <p className='text-white bg-secondary_color py-2 mb-5 text-xl px-10'>{item}</p>
+              branchData?.details?.map((item ,index)=>(
+                <p key={index} className='text-white bg-secondary_color py-2 mb-5 text-xl px-10'>{item}</p>
 
               ))
             }
