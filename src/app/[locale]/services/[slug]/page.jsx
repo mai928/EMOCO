@@ -37,22 +37,20 @@ const ServiceDetails = async ({ params }) => {
 
   return (
     <section>
-      <div className='relative w-full h-[55vh] lg:h-[80vh] '>
-        <Image
-          src='/assets/Scope1.jpg'
-          alt='img'
-          layout='fill'
-          objectFit='cover'
-          quality={100}
-          className='w-full h-full'
-          sizes="(max-width: 600px) 150vw,
+        <div className='relative w-full h-[55vh] lg:h-[80vh] '>
+                <Image
+                    src='/assets/Scope1.jpg'
+                    alt='img'
+                    layout='fill'
+                    objectFit='cover'
+                    quality={100}
+                    className='w-full h-full'
+                    sizes="(max-width: 600px) 150vw,
                (max-width: 1200px) 50vw,
                "
-        />
-        <h1 className='absolute left-7 bottom-20 lg:bottom-32 lg:start-96 text-3xl lg:text-5xl text-white font-semibold'>
-          {t("services details")}
-        </h1>
-      </div>
+                />
+                <div className='absolute inset-0 bg-black opacity-20'/>
+               </div>
       <div className=' px-5  lg:px-10 py-20 block lg:flex justify-between gap-20 '>
         <div className=' w-full lg:w-[50%]  text-center lg:text-start'>
           <img className='w-full h-full' alt='img' src={ServiceDetails.photo} />
