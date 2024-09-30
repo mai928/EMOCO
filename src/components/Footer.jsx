@@ -11,14 +11,14 @@ const Footer =async ({params}) => {
 
 
     const footer = await fetchData(`api/settings`,locale)
-     const data =  footer?.data
+     const datafooter =  footer?.data
 
 
 
     return (
         <section className='absolute bottom-0 right-0 left-0 w-full'>
             <div className='z-10 bg-opacity-50 bg-black py-2  text-center'>
-                <p className='text-white'>{t(data.footer)}</p>
+                <p className='text-white'>{t(datafooter?.footer || '')}</p>
             </div>
         </section>
 
