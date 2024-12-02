@@ -39,12 +39,12 @@ const ProductDetails = async ({ params }) => {
                     <h1 className='text-4xl font-semibold py-5'>{t(singleProduct.title)}</h1>
                     <div className=" text-slate-700 text-lg leading-8 " dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize((t(singleProduct.details))) }} />
 
-                    {/* <div className="text-slate-700 text-lg leading-8 " dangerouslySetInnerHTML={{
+                    <div className="text-slate-700 text-lg leading-8 " dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize((t(singleProduct.details)), {
                             ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'ul', 'li', 'ol', 'span'],
                             ALLOWED_ATTR: ['href', 'target', 'style']
                         })
-                    }} />    */}
+                    }} />   
                     
                                  </div>
 
