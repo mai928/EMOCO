@@ -40,7 +40,7 @@ const Form = () => {
         e.preventDefault();
         const myHeaders = new Headers();
         myHeaders.append("Accept-Language", i18n.language);
-        myHeaders.append("Cookie", "laravel_session=NCqzcvKaxeukpVnKGazFEy1Ig1lbjc99Y0JdjOTT");
+        myHeaders.append("Cookie", "laravel_session=4pTAB6bXaqVgozzbmBNdc8tBFHcxs6hmkXuRyLco");
 
 
         try {

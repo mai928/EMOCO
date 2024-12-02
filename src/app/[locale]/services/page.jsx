@@ -34,9 +34,9 @@ const Services = async ({ params }) => {
 
     return (
         <section className='h-full   w-full'>
-             <div className='relative w-full h-[55vh] lg:h-[80vh] '>
+             <div className='relative w-full h-[55vh] lg:h-[70vh] '>
                 <Image
-                    src='/assets/Scope1.jpg'
+                    src='/assets/main2.webp'
                     alt='img'
                     layout='fill'
                     objectFit='cover'

@@ -11,10 +11,10 @@ export async function generateMetadata({ params }) {
     const { locale } = params
 
     return {
-        title: locale === 'ar' ? 'معلومات عن | EMOCO' : locale === 'en' ? "Information about  | EMOCO" : locale === 'fr' ? "Information about  | EMOCO":'',
-        description:  locale === 'ar' ? 'معلومات عن | EMOCO' : locale === 'en' ? "Information about  | EMOCO" : locale === 'fr' ? "Information about  | EMOCO":'',
+        title: locale === 'ar' ? 'معلومات عن | EMOCO' : locale === 'en' ? "Information about  | EMOCO" : locale === 'fr' ? "Information about  | EMOCO" : '',
+        description: locale === 'ar' ? 'معلومات عن | EMOCO' : locale === 'en' ? "Information about  | EMOCO" : locale === 'fr' ? "Information about  | EMOCO" : '',
         other: {
-            title: locale === 'ar' ? 'معلومات عن | EMOCO' : locale === 'en' ? "Information about  | EMOCO" : locale === 'fr' ? "Information about  | EMOCO":'',
+            title: locale === 'ar' ? 'معلومات عن | EMOCO' : locale === 'en' ? "Information about  | EMOCO" : locale === 'fr' ? "Information about  | EMOCO" : '',
         }
 
     }
@@ -28,13 +28,17 @@ const AboutUs = async ({ params }) => {
     const { t } = await initTranslations(locale, i18nNamespaces)
 
 
-    const videoData = await fetchData(`api/about-us`,locale)
+    const aboutData = await fetchData(`api/about-us`, locale)
+    // console.log('aboutData::::',aboutData?.data)
+    const data = aboutData?.data
+
+    const videoData = await fetchData(`api/settings`, locale)
     // console.log('videoData::::',videoData?.data)
-     const data =  videoData?.data
+    const videoInfo = videoData?.data
 
 
-     const partner = await fetchData('api/partners', locale)
-     const partnerData =partner?.data
+    const partner = await fetchData('api/partners', locale)
+    const partnerData = partner?.data
 
 
 
@@ -42,9 +46,9 @@ const AboutUs = async ({ params }) => {
 
     return (
         <section className='h-full   w-full'>
-            <div className='relative w-full h-[55vh] lg:h-[80vh] '>
+            <div className='relative w-full h-[55vh] lg:h-[70vh] '>
                 <Image
-                    src='/assets/Scope1.jpg'
+                    src='/assets/main2.webp'
                     alt='img'
                     layout='fill'
                     objectFit='cover'
@@ -54,8 +58,8 @@ const AboutUs = async ({ params }) => {
                (max-width: 1200px) 50vw,
                "
                 />
-                <div className='absolute inset-0 bg-black opacity-20'/>
-               
+                <div className='absolute inset-0 bg-black opacity-20' />
+
             </div>
 
 
@@ -65,12 +69,33 @@ const AboutUs = async ({ params }) => {
                     <h2 className='text-[3.5rem] font-bold  uppercase  mt-5 lg:mt-0'>
                         {t(data.title)}
                     </h2>
-                    <div className='text-gray-600 text-lg py-10 leading-10' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(data.details)) }}/>
-                    {/* <p >{t(data.details)}</p> */}
+                    {/* <div className='text-gray-600 text-lg py-10 leading-10' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t(data.details)) }} /> */}
+
+                    <div className=" text-gray-600 text-lg py-10 leading-10 " dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize((t(data.details)), {
+                            ALLOWED_TAGS: ['b', 'i', 'em', 'strong', 'a', 'p', 'br', 'pre', 'ul', 'li', 'ol', 'span'],
+                            ALLOWED_ATTR: ['href', 'target', 'style']
+                        })
+                    }} />
+
+
+
                 </div>
+
+
+
             </div>
 
-            <div className='px-20 pb-16'>
+
+
+            <div className='px-5 lg:px-20 pb-16'>
+                <video className='w-[750px] m-auto '
+                    controls
+                    autoPlay
+                    muted
+                    src={videoInfo?.home_video} />
+
+
                 <Partner params={params} partnerData={partnerData} />
             </div>
         </section>
